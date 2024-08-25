@@ -14,6 +14,13 @@ html {
 body {
     line-height: 1.6;
     color: #333;
+    background-color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
 }
 
 a {
@@ -36,6 +43,10 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+header.dark-mode {
+    background-color: #1f1f1f !important;
 }
 
 nav {
@@ -83,6 +94,10 @@ nav {
     border-radius: 5px;
 }
 
+.nav-links.dark-mode li a {
+    color: #e0e0e0;
+}
+
 
 /* Hamburger Menu */
 
@@ -114,8 +129,7 @@ nav {
     background-image: url('assets/hero-bg.jpg');
     background-size: cover;
     background-position: center;
-    padding-top: 60px;
-    /* Adjust for fixed header */
+    padding-top: 100px;
 }
 
 .hero-content {
@@ -131,6 +145,10 @@ nav {
 .hero p {
     font-size: 1.5rem;
     margin-bottom: 20px;
+}
+
+.hero.dark-mode {
+    background-color: #1f1f1f;
 }
 
 .btn-cta {
@@ -167,6 +185,11 @@ nav {
     margin: 0 auto;
 }
 
+.about.dark-mode {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
 
 /* Menu Section */
 
@@ -193,7 +216,7 @@ nav {
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 20px;
-    width: 300px;
+    width: 80%;
     border-radius: 5px;
     text-align: center;
     transition: box-shadow 0.3s ease;
@@ -226,6 +249,11 @@ nav {
     font-size: 1.5rem;
     color: #FF5733;
     font-weight: bold;
+}
+
+.menu.dark-mode {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
 }
 
 
@@ -282,8 +310,18 @@ nav {
     transition: background-color 0.3s ease;
 }
 
+.contact form button.dark-mode {
+    background-color: #FF5733;
+    /* Warna yang lebih kontras */
+}
+
 .contact form button:hover {
     background-color: #fff;
+}
+
+.contact.dark-mode {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
 }
 
 .map-container {
@@ -327,8 +365,12 @@ nav {
 footer {
     background-color: #222;
     color: #fff;
-    padding: 20px 0;
+    padding: 30px 0;
     text-align: center;
+}
+
+footer.dark-mode {
+    background-color: #1f1f1f;
 }
 
 
@@ -340,7 +382,6 @@ footer {
         flex-direction: column;
         gap: 0;
         background-color: #333;
-        /* Background color for mobile menu */
         position: absolute;
         top: 60px;
         right: 0;
@@ -357,21 +398,45 @@ footer {
     }
     .nav-links li a {
         color: #fff;
-        /* Ensure text color is readable */
         font-weight: bold;
         padding: 8px 12px;
     }
     .nav-links li a:hover {
         background-color: #555;
-        /* Match hover color with desktop */
         border-radius: 5px;
     }
     .hamburger {
         display: flex;
+        flex-direction: column;
+        cursor: pointer;
         background-color: #333;
-        /* Background color of hamburger menu */
         padding: 5px;
         border-radius: 5px;
+        position: relative;
+        /* Ensure it's positioned relative for correct placement of the button */
+        z-index: 1001;
+        /* Ensure it’s above the nav-links */
+    }
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 4px;
+    }
+    /* Ensure the button is positioned correctly relative to the hamburger */
+    #darkModeToggle {
+        position: absolute;
+        top: 30px;
+        right: 80px;
+        /* Adjust this value as needed to place the button to the right of the hamburger */
+        background-color: #000;
+        color: #fff;
+        padding: 5px 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 1002;
+        /* Ensure the button is above the hamburger */
     }
     .menu-items {
         flex-direction: column;
