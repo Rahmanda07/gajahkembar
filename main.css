@@ -29,6 +29,7 @@ header {
     color: #fff;
     padding: 10px 20px;
     position: fixed;
+    height: 100px;
     width: 100%;
     top: 0;
     left: 0;
@@ -69,6 +70,18 @@ nav {
     list-style: none;
     display: flex;
     gap: 20px;
+    opacity: 0;
+    /* Mulai dengan menu tersembunyi */
+    visibility: hidden;
+    /* Menghindari interaksi saat tersembunyi */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.nav-links.active {
+    opacity: 1;
+    /* Menu terlihat */
+    visibility: visible;
+    /* Memungkinkan interaksi */
 }
 
 .nav-links li a {
@@ -322,6 +335,44 @@ nav {
 }
 
 
+/* Gaya tombol Kembali ke Atas */
+
+.back-to-top {
+    display: none;
+    /* Sembunyikan tombol secara default */
+    position: fixed;
+    bottom: 20px;
+    /* Jarak dari bawah halaman */
+    right: 20px;
+    /* Jarak dari sisi kanan halaman */
+    width: 60px;
+    /* Lebar tombol */
+    height: 60px;
+    /* Tinggi tombol */
+    background-color: #ff5733;
+    /* Warna latar belakang tombol */
+    border-radius: 50%;
+    /* Membuat tombol menjadi lingkaran */
+    text-align: center;
+    line-height: 60px;
+    /* Vertikal centering gambar */
+    cursor: pointer;
+    z-index: 1000;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Efek bayangan */
+}
+
+.back-to-top img {
+    width: 30px;
+    /* Lebar gambar */
+    height: 30px;
+    /* Tinggi gambar */
+    vertical-align: -10px;
+    /* Menyelaraskan gambar secara vertikal */
+}
+
+
 /* Footer */
 
 footer {
@@ -336,20 +387,30 @@ footer {
 
 @media screen and (max-width: 768px) {
     .nav-links {
-        display: none;
+        list-style: none;
+        display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 10px;
+        opacity: 0;
+        /* Mulai dengan menu tersembunyi */
+        visibility: hidden;
+        /* Menghindari interaksi saat tersembunyi */
+        transition: opacity 0.1s ease, visibility 0.1s ease;
         background-color: #333;
-        /* Background color for mobile menu */
+        /* Warna latar belakang menu mobile */
         position: absolute;
-        top: 60px;
+        top: 100px;
+        /* Jarak dari atas, sesuaikan jika diperlukan */
         right: 0;
         width: 100%;
         padding: 10px;
         z-index: 999;
     }
     .nav-links.active {
-        display: flex;
+        opacity: 1;
+        /* Menu terlihat */
+        visibility: visible;
+        /* Memungkinkan interaksi */
     }
     .nav-links li {
         text-align: center;

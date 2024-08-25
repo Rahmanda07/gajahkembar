@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
                 const startPosition = window.pageYOffset;
                 const distance = targetPosition - startPosition;
-                const duration = 1000; // Adjust duration (in milliseconds) for smoother scrolling
+                const duration = 100; // Adjust duration (in milliseconds) for smoother scrolling
                 let start = null;
 
                 function smoothScroll(currentTime) {
@@ -41,4 +41,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const backToTopBtn = document.getElementById('backToTopBtn');
+
+    // Menampilkan tombol Kembali ke Atas saat scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) { // Menampilkan tombol jika scroll lebih dari 200px
+            backToTopBtn.style.display = 'block';
+        } else {
+            backToTopBtn.style.display = 'none';
+        }
+    });
+
+    // Menambahkan aksi klik untuk tombol Kembali ke Atas
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
